@@ -1,5 +1,7 @@
 package com.example.ws.config;
 
+import com.example.ws.interceptor.AuthInterceptor;
+import com.example.ws.interceptor.ClientLoginInterceptor;
 import com.example.ws.service.WsTestService;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
@@ -22,6 +24,7 @@ public class WsConfig {
         this.wsTestService = wsTestService;
     }
 
+    @SuppressWarnings("ALL")
     @Bean(name = "cxfServlet")
     public ServletRegistrationBean cxfServlet() {
         return new ServletRegistrationBean(new CXFServlet(), "/webservice/*");
@@ -36,6 +39,8 @@ public class WsConfig {
     public Endpoint wsTestServiceEndPoint() {
         EndpointImpl endpoint = new EndpointImpl(springBus(), wsTestService);
         endpoint.publish("/test");
+        endpoint.getInInterceptors().add(new AuthInterceptor());
+        endpoint.getInInterceptors().add(new ClientLoginInterceptor());
         return endpoint;
     }
 }
