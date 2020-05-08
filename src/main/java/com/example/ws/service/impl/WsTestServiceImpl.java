@@ -3,6 +3,8 @@ package com.example.ws.service.impl;
 import com.example.ws.domain.Clothes;
 import com.example.ws.domain.User;
 import com.example.ws.service.WsTestService;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.springframework.stereotype.Service;
 
 import javax.jws.WebService;
@@ -31,6 +33,12 @@ public class WsTestServiceImpl implements WsTestService {
     @Override
     public List<User> userCall() {
         return userList;
+    }
+
+    @Override
+    public String userCallXml() {
+        XStream xstream = new XStream(new DomDriver());
+        return xstream.toXML(userList);
     }
 
     @Override

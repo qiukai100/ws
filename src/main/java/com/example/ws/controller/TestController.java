@@ -1,5 +1,7 @@
 package com.example.ws.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.example.ws.utils.WebServiceUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +23,7 @@ public class TestController {
         } else {
             result = WebServiceUtils.callService(wsdlUrl, operationName, param);
         }
-        log.info("callService result is {}", result);
+        log.info("callService result is {}", JSONArray.toJSON(result));
         return result;
     }
 }

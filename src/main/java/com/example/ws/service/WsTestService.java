@@ -15,6 +15,9 @@ public interface WsTestService {
     List<User> userCall();
 
     @WebMethod
+    String userCallXml();
+
+    @WebMethod
     @WebResult(name = "String")
     String getUserName(@WebParam(name = "name") String name);
 

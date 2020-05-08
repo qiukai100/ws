@@ -9,6 +9,7 @@ import org.apache.cxf.phase.Phase;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 import java.util.List;
 
@@ -37,6 +38,6 @@ public class ClientLoginInterceptor extends AbstractPhaseInterceptor<SoapMessage
         password.setTextContent(this.password);
         auth.appendChild(username);
         auth.appendChild(password);
-        headers.add(0, new Header(new QName("timamaes"), auth));
+        headers.add(0, new Header(new QName(XMLConstants.NULL_NS_URI, "timamaes", XMLConstants.DEFAULT_NS_PREFIX), auth));
     }
 }

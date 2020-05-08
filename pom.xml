@@ -18,6 +18,8 @@
         <java.version>1.8</java.version>
         <cxf.version>3.2.4</cxf.version>
         <lombok.version>1.16.16</lombok.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <xstream.version>1.3.1</xstream.version>
     </properties>
 
     <dependencies>
@@ -53,7 +55,13 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.58</version>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
         </dependency>
     </dependencies>
 
